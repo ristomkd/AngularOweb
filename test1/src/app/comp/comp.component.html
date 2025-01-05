@@ -1,9 +1,36 @@
-<div>
-    <div>
-        {{indeks+ "." + vozac?.name}}
+<div [ngClass]="klasi()" role="listitem" [attr.aria-label]="'Driver information for ' + vozac?.name">
+    <ng-template role="alert" aria-live="polite" #noImg>
+        Ska slika
+    </ng-template>
+
+    <div role="heading" 
+         aria-level="2" 
+         [ngClass]="stilovi()"
+         [id]="'driver-name-' + vozac?.id">
+        {{indeks + "." + vozac?.name}}
     </div>
-    <img width="300" [src]="vozac?.iconUrl">
-    <div>{{vozac?.team}}</div>
-    <button (click)="onAppView()">Klikni Me</button>
-    <div> &nbsp;</div>
+
+    <img width="300" 
+         *ngIf="vozac?.iconUrl; else noImg" 
+         [src]="vozac?.iconUrl" 
+         [attr.alt]="vozac?.name + ' profile photo'"
+         [attr.aria-describedby]="'driver-team-' + vozac?.id">
+
+    <div [id]="'driver-team-' + vozac?.id">{{vozac?.team}}</div>
+
+    <div [ngSwitch]="vozac?.category" 
+         [attr.aria-live]="'polite'"
+         role="status">
+        <div *ngSwitchCase="'EXPERT'" [attr.aria-label]="'Expert category'">EXPERT</div>
+        <div *ngSwitchCase="'LUNATIC'" [attr.aria-label]="'Lunatic category'">5arda</div>
+        <div *ngSwitchCase="'ASD'" [attr.aria-label]="'ASD category'">Dusicka</div>
+        <div *ngSwitchDefault [attr.aria-label]="'No category available'">No comment</div>
+    </div>
+
+    <button (click)="onDrView()" 
+            [attr.aria-label]="'View details for ' + vozac?.name"
+            [attr.aria-describedby]="'driver-name-' + vozac?.id"
+            tabindex="0">
+        Klikni me
+    </button>
 </div>

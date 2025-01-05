@@ -1,0 +1,48 @@
+.driver-card {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.driver-name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.highlighted {
+  color: #ff4081;
+}
+
+button:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+.is-first {
+  border-top: 3px solid #4CAF50;
+}
+
+.is-last {
+  border-bottom: 3px solid #4CAF50;
+}
+
+.is-even {
+  background-color: #f5f5f5;
+}
+
+.is-odd {
+  background-color: #ffffff;
+}
+
+.expert {
+  border-left: 4px solid #4CAF50;
+}
+
+.lunatic {
+  border-left: 4px solid #FF9800;
+}
+
+.asd {
+  border-left: 4px solid #2196F3;
+}
